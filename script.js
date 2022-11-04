@@ -77,7 +77,7 @@ let drawCells=()=>{
           .attr('x', (item)=>{
             return xScale(item['year'])
           })
-          .on('mouseover', (item)=>{
+          .on('mouseover', (event, d)=>{
             tooltip.transition()
                    .style('visibility', 'visible')
 
@@ -95,8 +95,8 @@ let drawCells=()=>{
                 'November',
                 'December'
             ]
-            tooltip.text(item['year'] + ' ' + monthNames[item['month'] -1 ] + ' - ' + (baseTemp+ item['variance']) + ' (' + item['variance'] + ')')
-            tooltip.attr('data-year', item['year'])
+            tooltip.text(d['year'] + ' ' + monthNames[d['month'] -1 ] + ' - ' + (baseTemp+ d['variance']) + ' (' + d['variance'] + ')')
+            tooltip.attr('data-year', d['year'])
         
           })
           .on ('mouseout', (item) =>{
